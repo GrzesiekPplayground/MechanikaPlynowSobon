@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "Well.h"
+#include <math.h>
+#include <stdio.h>
 
 
 Well::Well()
@@ -9,6 +11,11 @@ Well::Well()
 
 Well::~Well()
 {
+}
+
+bool Well::getisSI() const
+{
+	return _isSI;
 }
 
 double Well::getvSr() const
@@ -27,7 +34,7 @@ double Well::getdelta() const
 }
 double Well::getdW() const
 {
-	return _dW;
+	return _D - (2*_delta);
 }
 
 double Well::geth() const
@@ -57,7 +64,7 @@ double Well::getmi() const
 
 double Well::getni() const
 {
-	return _ni;
+	return _mi / _rho;
 }
 
 double Well::getpK() const
@@ -67,7 +74,7 @@ double Well::getpK() const
 
 double Well::getA() const
 {
-	return _A;
+	return _pi * pow((getdW()/2), 2);
 }
 
 double Well::getre() const
@@ -82,7 +89,7 @@ double Well::getlambda() const
 
 double Well::getgamma() const
 {
-	return _gamma;
+	return _g * _rho;
 }
 
 double Well::getdP() const
@@ -95,3 +102,54 @@ double Well::getx() const
 	return _x;
 }
 
+void Well::setD(double value)
+{
+	_D = value;
+}
+
+void Well::setdelta(double value)
+{
+	_delta = value;
+}
+
+void Well::seth(double value)
+{
+	_h = value;
+}
+
+void Well::setk(double value)
+{
+	_k = value;
+}
+
+void Well::setq(double value)
+{
+	_q = value;
+}
+
+void Well::setrho(double value)
+{
+	_rho = value;
+}
+
+void Well::setmi(double value)
+{
+	_mi = value;
+}
+
+void Well::setvSr(double value)
+{
+	_vSr = value;
+}
+
+// Calculations
+
+//void calculatevSr()
+//{
+//	setvSr((this._q) / getA());
+//}
+
+//void CalculateRe()
+//{
+//	_re = (getdW() * _vSr) / getni();
+//}

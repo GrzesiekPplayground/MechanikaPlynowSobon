@@ -11,8 +11,6 @@ public:
 	~Well();
 
 	//Getters
-	double getpi() const;
-	double getg() const;
 
 	bool getisSI() const;
 	
@@ -35,7 +33,6 @@ public:
 	double getx() const;
 
 	//Setters
-	void setvSr(double);
 	void setD(double);
 	void setdelta(double);
 	void seth(double);
@@ -43,7 +40,7 @@ public:
 	void setq(double);
 	void setrho(double);
 	void setmi(double);
-	void setpK(double);
+	void setpK(double);	
 
 private:
 
@@ -65,6 +62,11 @@ private:
 	double _x;
 
 	bool _isSI;
+
+	void setvSr(double);
+
+	//void calculatevSr();
+	//void CalculateRe();
 };
 
 #endif
